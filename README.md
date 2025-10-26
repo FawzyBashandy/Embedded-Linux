@@ -18,3 +18,10 @@
 
 8- w  wall  watch  watchgnupg  wc  wdctl  wget  whatis  whereis  which  which.debianutils  whiptail  who  whoami  whoopsie  whoopsie-preferences  word-list-compress  wpa_passphrase  write  write.ul
 
+9-type command : is used to tell how the shell will interpret a specific command , it also provides information about whether a command is a shell built-in , an alias , an external executable file or a function
+
+10- ?
+
+11-man read file -> found read(2) command that read from a file descriptor
+
+12-apropos -> search in the manuals using name or description 
