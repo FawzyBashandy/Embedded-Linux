@@ -10,7 +10,7 @@
    c) /home/fawzybashandy/workspace/docs/mycv --> Absolute
       workspace/docs/mycv --> Relative
 
-5-cp /etc/passwd ~  and then mv ~/passwd ~/mypasswd
+5-cp /etc/passwd ~/mypasswrd
 
 6-mv ~/mypasswd ~/oldpasswd
 
