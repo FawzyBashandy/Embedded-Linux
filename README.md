@@ -20,7 +20,10 @@
 
 9-type command : is used to tell how the shell will interpret a specific command , it also provides information about whether a command is a shell built-in , an alias , an external executable file or a function
 
-10- ?
+10- using type /usr/bin/c* we get : 
+/usr/bin/cp is /usr/bin/cp
+/usr/bin/cpan is /usr/bin/cpan
+
 
 11-man read file -> found read(2) command that read from a file descriptor
 
