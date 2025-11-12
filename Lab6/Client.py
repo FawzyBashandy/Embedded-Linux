@@ -23,4 +23,4 @@ while True:
     # Receive and print result
     result = client.recv(1024).decode()
     print(result)
-    break  # Exit after one calculation (remove to keep looping)
+    break  # Exit

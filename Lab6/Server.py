@@ -10,30 +10,29 @@ op = ''
 while True:
     client_socket, addr = server.accept()
     print(f"Connection from {addr} has been established!")
-    client_socket.sendall("Enter First Number : ".encode())  # Encode string to bytes and send
-    first_number = client_socket.recv(30).decode().strip()  # Receive up to 30 bytes and decode from bytes to string
-    client_socket.sendall("Enter Second Number : ".encode())  # Encode string to bytes and send
-    second_number = client_socket.recv(30).decode().strip()  # Receive up to 30 bytes and decode from bytes to string
-    client_socket.sendall("Enter Operation (+, -, *, /) : ".encode())  # Encode string to bytes and send
+
+    client_socket.sendall("Enter First Number : ".encode())  
+    first_number = client_socket.recv(30).decode().strip()
+
+    client_socket.sendall("Enter Second Number : ".encode())  
+    second_number = client_socket.recv(30).decode().strip()
+    
+    client_socket.sendall("Enter Operation (+, -, *, /) : ".encode())
     op = client_socket.recv(5).decode().strip()
-      # Receive up to 5 bytes and decode from bytes to string
+
     result = 0
-    try:
-        num1 = float(first_number)
-        num2 = float(second_number)
-        if op == '+':
-            result = num1 + num2
-        elif op == '-':
-            result = num1 - num2
-        elif op == '*':
-            result = num1 * num2
-        elif op == '/':
-            result = num1 / num2
-        else:
-            result = "Invalid Operation"
-    except ValueError:
-        result = "Invalid Number"
-    except ZeroDivisionError:
-        result = "Division by Zero Error"
+    num2 = float(second_number)
+    num1 = float(first_number)
+    if op == '+':
+        result = num1 + num2
+    elif op == '-':
+        result = num1 - num2
+    elif op == '*':
+        result = num1 * num2
+    elif op == '/':
+        result = num1 / num2
+    else:
+        result = "Invalid Operation"
+
     client_socket.sendall(f"Result: {result}\n".encode())  # Encode string to bytes and send
     client_socket.close() # Close the client socket after handling the request
