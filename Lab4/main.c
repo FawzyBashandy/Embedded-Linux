@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
        int createdFD = 0;
        char buffer[12] = {0};
        ssize_t characterRead = 0;
-       char flag = 0;                            // 0 -> Capacity , 1 -> Status
+       char flag = 0;  // 0 -> Capacity , 1 -> Status
        if (strcasecmp("Capacity", argv[1]) == 0) // Equal
        {
               createdFD = open("/sys/class/power_supply/BAT0/capacity", O_RDONLY);
