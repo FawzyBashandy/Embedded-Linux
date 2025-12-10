@@ -102,6 +102,59 @@ eGPIO_Status_t GPIO::readPin(eGPIO_Pin_Number_t piN, ePin_Logic_t &currLogic) {
   return status;
 }
 
+  //Make lhs same pin as RHS
+  GPIOPin& GPIOPin::operator=(GPIOPin& other)
+  {
+    this->pin = other.pin;
+    return *this;
+  }
+  //are they same gpio PIN?
+  bool GPIOPin::operator==(GPIOPin& other)
+  {
+    return this->pin == other.pin;
+  }
+  bool GPIOPin::operator!=(GPIOPin& other)
+  {
+    return this->pin != other.pin;
+  }
+  //Move to the next pin number
+  //prefix ++
+  GPIOPin& GPIOPin::operator++()
+  {
+    this->pin = static_cast<eGPIO_Pin_Number_t>((this->pin + 1)%28);
+    return *this;
+  }
+  //postfix ++
+  GPIOPin GPIOPin::operator++(int)
+  {
+    GPIOPin temp = GPIOPin(this->pin);
+    this->pin = static_cast<eGPIO_Pin_Number_t>((this->pin + 1)%28);
+    return temp;
+  }
+  //prefix --
+  GPIOPin& GPIOPin::operator--()
+  {
+    this->pin = static_cast<eGPIO_Pin_Number_t>((this->pin - 1)%28);
+    return *this;
+  }
+  //postfix --
+  GPIOPin GPIOPin::operator--(int)
+  {
+    GPIOPin temp = GPIOPin(this->pin);
+    this->pin = static_cast<eGPIO_Pin_Number_t>((this->pin - 1)%28);
+    return temp;
+  }
+
+  //Create another GPIOPIN of pin = pinlhs+pinrhs
+  GPIOPin GPIOPin::operator+(GPIOPin&other)
+  {
+    return GPIOPin(static_cast<eGPIO_Pin_Number_t>((this->pin + other.pin)%28));
+  }
+GPIOPin GPIOPin::operator[](int pinNumber)
+{
+  return GPIOPin(static_cast<eGPIO_Pin_Number_t>( pinNumber));
+} 
+
 GPIOPin::GPIOPin(eGPIO_Pin_Number_t pin) {
   std::cout << "GPIOPin Constructor Called";
   this->pin = pin;
@@ -116,6 +169,7 @@ eGPIO_Status_t GPIOPin::writePin(ePin_Logic_t logic) {
 eGPIO_Status_t GPIOPin::readPin(ePin_Logic_t &currLogic) {
   return GPIO::readPin(pin, currLogic);
 }
+
 
 GPIOPin::~GPIOPin() {
   close(GPIO::openedDirFds[pin]);

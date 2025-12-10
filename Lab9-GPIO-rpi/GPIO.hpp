@@ -67,6 +67,25 @@ public:
   eGPIO_Status_t setDirection(ePin_Direction_t dir);
   eGPIO_Status_t writePin(ePin_Logic_t logic);
   eGPIO_Status_t readPin(ePin_Logic_t &currLogic);
+  //Make lhs same pin as RHS
+  GPIOPin& operator=(GPIOPin& other);
+  //are they same gpio PIN?
+  bool operator==(GPIOPin& other);
+  bool operator!=(GPIOPin& other);
+  //Move to the next pin number
+  //prefix ++
+  GPIOPin& operator++();
+  //postfix ++
+  GPIOPin operator++(int);
+  //prefix --
+  GPIOPin& operator--();
+  //postfix --
+  GPIOPin operator--(int);
+
+  //Create another GPIOPIN of pin = pinlhs+pinrhs
+  GPIOPin operator+(GPIOPin&other);
+GPIOPin operator[](int pinNumber);
+
 
   ~GPIOPin();
 };
