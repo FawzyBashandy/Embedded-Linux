@@ -13,7 +13,7 @@ class Logger
     Logger& operator=(const Logger&)=delete;
 
     Logger(std::string filePath);
-    void logTemperature(std::shared_ptr<TemperatureData> data) const;
+    void logTemperature(std::weak_ptr<TemperatureData> data) ;
     void changeLogFile(std::string filePath);
     ~Logger();
 };

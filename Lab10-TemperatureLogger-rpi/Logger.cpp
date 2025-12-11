@@ -11,7 +11,17 @@ Logger::Logger(std::string filePath)
     std::perror("File Couldn't be opened");
   }
 }
-void Logger::logTemperature(std::shared_ptr<TemperatureData> data) const {
+void Logger::logTemperature(std::weak_ptr<TemperatureData> receivedTemp) {
+  std::shared_ptr<TemperatureData> data;
+  if(!receivedTemp.expired())
+  {
+    data = receivedTemp.lock();
+  }
+  else
+  {
+    std::perror("No Temperature Received");
+    return;
+  }
   std::string temperatureString = std::to_string(data->getTimeStamp()) + " : " +
                                   std::to_string(data->getTemperature()) +
                                   " °C\n";

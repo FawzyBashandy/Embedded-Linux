@@ -2,7 +2,6 @@
 #include "../Lab9-GPIO-rpi/GPIO.hpp"
 #include "TemperatureData.hpp"
 
-
 LM35Sensor::LM35Sensor(std::string serialPath) : serialFile_{open(serialPath.c_str(),O_RDONLY)}
 {
     if(serialFile_ == -1)
@@ -10,7 +9,7 @@ LM35Sensor::LM35Sensor(std::string serialPath) : serialFile_{open(serialPath.c_s
         std::perror("File Couldn't be opened");
     }
 }
-TemperatureData LM35Sensor::readTemperature()const
+void LM35Sensor::readTemperature()
 {
     char Buffer[30];
     int nB = read(serialFile_,Buffer,sizeof(Buffer));
@@ -25,8 +24,12 @@ TemperatureData LM35Sensor::readTemperature()const
     else
     {
         std::string temp(Buffer,nB);
-        TemperatureData temperature{std::stof(temp)};
-        return temperature;
+        *pT_ = (TemperatureData(std::stof(temp)));
+        return;
     }
-    return TemperatureData{0};
+    *pT_ = (TemperatureData(0.0));
+}
+std::shared_ptr<TemperatureData> LM35Sensor::getTemperature()const
+{
+    return pT_;
 }

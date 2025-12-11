@@ -6,5 +6,5 @@ class Display
 {
     public:
     Display()=default;
-    void displayTemperature(std::shared_ptr<TemperatureData> data);
+    void displayTemperature(std::weak_ptr<TemperatureData> data);
 };

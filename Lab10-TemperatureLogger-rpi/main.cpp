@@ -9,9 +9,9 @@ int main(void)
     Logger Logfile{"/home/pi/fooz.txt"};
     Display display;
     while(1){
-    std::shared_ptr<TemperatureData> pT=std::make_shared<TemperatureData>(sensor.readTemperature());
-    Logfile.logTemperature(pT);
-    display.displayTemperature(pT);
+    sensor.readTemperature();
+    Logfile.logTemperature(sensor.getTemperature());
+    display.displayTemperature(sensor.getTemperature());
     sleep(2);
     }
 
