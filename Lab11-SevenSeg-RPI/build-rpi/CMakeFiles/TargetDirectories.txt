@@ -1,0 +1,4 @@
+/home/fawzybashandy/workspace/Embedded/Embedded-Linux/Lab11-SevenSeg-RPI/build-rpi/CMakeFiles/my_lib.dir
+/home/fawzybashandy/workspace/Embedded/Embedded-Linux/Lab11-SevenSeg-RPI/build-rpi/CMakeFiles/SevenSegment.dir
+/home/fawzybashandy/workspace/Embedded/Embedded-Linux/Lab11-SevenSeg-RPI/build-rpi/CMakeFiles/edit_cache.dir
+/home/fawzybashandy/workspace/Embedded/Embedded-Linux/Lab11-SevenSeg-RPI/build-rpi/CMakeFiles/rebuild_cache.dir

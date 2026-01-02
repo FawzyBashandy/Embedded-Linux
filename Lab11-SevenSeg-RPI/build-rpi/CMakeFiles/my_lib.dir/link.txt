@@ -1,0 +1,1 @@
+/home/fawzybashandy/x-tools/aarch64-rpi3-linux-gnu/bin/aarch64-rpi3-linux-gnu-g++ -fPIC -shared -Wl,-soname,libmy_lib.so -o libmy_lib.so CMakeFiles/my_lib.dir/src/GPIO.cpp.o CMakeFiles/my_lib.dir/src/IOStream.cpp.o CMakeFiles/my_lib.dir/src/IStream.cpp.o CMakeFiles/my_lib.dir/src/OStream.cpp.o CMakeFiles/my_lib.dir/src/Stream.cpp.o CMakeFiles/my_lib.dir/src/SevenSegment.cpp.o 
