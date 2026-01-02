@@ -21,7 +21,6 @@ int main() {
     OStream* terminalOutput = new IOStream();
     OStream* sevenSegOutput = new SevenSegment(ssegConfig);
 
-    // --- Check Seven Segment initialization ---
     SevenSegment* sevenSegPtr = dynamic_cast<SevenSegment*>(sevenSegOutput);
     if (!sevenSegPtr || sevenSegPtr->getInitStatus() != SSEG_STATUS_OK) {
         std::cerr << "Seven Segment Initialization Failed!" << std::endl;
@@ -42,7 +41,7 @@ int main() {
         }
     }
 
-    // --- Clean up (never reached in this loop, but good practice) ---
+    // optional
     delete inputStream;
     delete terminalOutput;
     delete sevenSegOutput;
